@@ -1,0 +1,25 @@
+import pandas as pd  #USING BASE CONDA to run yfinance, This is for Yearly Financials
+import yfinance as yf
+def importing_yf_financials_into_folder(ticker):
+    ticker = input()
+    Ticker2 = yf.Ticker(ticker)
+    pnl =Ticker2.financials
+    bs = Ticker2.balancesheet
+    fs1 = pd.concat([pnl,bs])
+    fs1.to_csv(" " + ticker +'_Financials'+ '.csv')   # Put where you want file to be placed
+    return fs1
+importing_yf_financials_into_folder('x')
+
+
+import pandas as pd  #USING BASE CONDA to run yfinance , This is for Quarterly Financials
+import yfinance as yf
+def importing_yf_financials_into_folder(ticker):
+    ticker = input()
+    Ticker2 = yf.Ticker(ticker)
+    pnl =Ticker2.quarterly_financials
+    bs = Ticker2.quarterly_balancesheet
+    fs1 = pd.concat([pnl,bs])
+    fs1.to_csv(" " + ticker +'_QoQ_Financials'+ '.csv')
+    return fs1
+importing_yf_financials_into_folder('x')  # Put where you want file to be placed
+#quarterly info
